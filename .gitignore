@@ -1,0 +1,14 @@
+node_modules
+dist
+.env*
+*.log
+*.tsbuildinfo
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+
+# Prevent compiled JS from being committed alongside TS sources
+client/src/**/*.js

@@ -1,0 +1,22 @@
+{
+  "name": "telefonbuch",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "npm run lint --prefix client && npm run lint --prefix server",
+    "lint:fix": "npm run lint:fix --prefix client && npm run lint:fix --prefix server",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "prettier": "^3.5.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md,html}": "prettier --write",
+    "client/src/**/*.{js,jsx,ts,tsx}": "cd client && npx eslint --fix",
+    "server/src/**/*.{js,ts}": "cd server && npx eslint --fix"
+  }
+}
