@@ -147,7 +147,7 @@ export default function PhoneBook() {
       <TextField
         id="search-bar"
         inputRef={inputRef}
-        placeholder="Name oder Telefonnummer suchen..."
+        placeholder="Name oder Nummer suchen..."
         value={term}
         onChange={(e) => setTerm(e.target.value)}
         fullWidth

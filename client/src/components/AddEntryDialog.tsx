@@ -27,13 +27,14 @@ interface Props {
 
 export default function AddEntryDialog({ open, onClose, onSuccess, onExited }: Props) {
   const [generalError, setGeneralError] = useState("");
+  const [phoneBlurred, setPhoneBlurred] = useState(false);
 
   const {
     control,
     handleSubmit,
     reset,
     watch,
-    formState: { isValid, isSubmitting },
+    formState: { isValid, isSubmitting, submitCount },
   } = useForm<EntryInput>({
     resolver: zodResolver(entrySchema),
     mode: "onChange",
@@ -92,6 +93,7 @@ export default function AddEntryDialog({ open, onClose, onSuccess, onExited }: P
     resetDupCheck();
     reset();
     setGeneralError("");
+    setPhoneBlurred(false);
   };
 
   const handleClose = () => {
@@ -162,12 +164,16 @@ export default function AddEntryDialog({ open, onClose, onSuccess, onExited }: P
                 onChange={(e) => {
                   field.onChange(filterPhoneChars(e.target.value));
                 }}
+                onBlur={() => {
+                  field.onBlur();
+                  setPhoneBlurred(true);
+                }}
                 label="Telefonnummer"
                 type="tel"
                 fullWidth
                 disabled={submitting}
-                error={!!fieldState.error}
-                helperText={fieldState.error?.message}
+                error={!!fieldState.error && (phoneBlurred || submitCount > 0)}
+                helperText={(phoneBlurred || submitCount > 0) ? fieldState.error?.message : undefined}
               />
             )}
           />
