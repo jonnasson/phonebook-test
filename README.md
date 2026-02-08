@@ -34,6 +34,24 @@ Alternativ direkt mit Docker Compose:
 docker compose -f docker/compose-dev.yml up --build
 ```
 
+## Umgebungsvariablen
+
+`bin/phonebook-test` funktioniert ohne weitere Konfiguration — alle Werte sind in `docker/compose-dev.yml` hinterlegt.
+
+Für `docker compose up` direkt (ohne das Skript):
+
+```bash
+cp .env.example .env
+```
+
+Für lokale Entwicklung ohne Docker: `server/.env.local` anlegen:
+
+```env
+MONGO_URI=mongodb://localhost:27017
+JWT_SECRET=telefonbuch-jwt-secret
+PORT=4000
+```
+
 ## Nutzung
 
 1. Registrierung oder als Gast anmelden unter `/login`
