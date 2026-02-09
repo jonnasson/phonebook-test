@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { HttpLink } from "@apollo/client/link/http";
 import { SetContextLink } from "@apollo/client/link/context";
 
-const httpLink = new HttpLink({ uri: import.meta.env.VITE_GRAPHQL_URL || "/graphql" });
+const httpLink = new HttpLink({ uri: "/graphql" });
 
 const authLink = new SetContextLink((prevContext) => {
   const token = localStorage.getItem("token");
