@@ -40,6 +40,7 @@ services:
     environment:
       BACKEND_HOST: server
       PORT: 80
+      RESOLVER: 127.0.0.11
     ports:
       - "3000:80"
     depends_on:
