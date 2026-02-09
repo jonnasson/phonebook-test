@@ -6,7 +6,7 @@ Telefonbuch-Suchapplikation mit React/MUI-Frontend, Apollo Server/GraphQL-Backen
 
 | Schicht       | Technologie                                                          |
 | ------------- | -------------------------------------------------------------------- |
-| Frontend      | React 19, TypeScript, MUI 7, Apollo Client 4, React Router 7, Vite 7 |
+| Frontend      | React 19, TypeScript, MUI 7, Apollo Client 4, React Hook Form, React Router 7, Vite 7 |
 | Backend       | Apollo Server 5 (standalone), TypeScript, GraphQL                    |
 | Datenbank     | MongoDB 7                                                            |
 | Auth          | JWT + bcrypt                                                         |

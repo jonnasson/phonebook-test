@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, useWatch, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Card,
@@ -48,7 +48,6 @@ export default function AuthDialog() {
   const {
     control,
     handleSubmit,
-    watch,
     reset,
     formState: { isSubmitting, submitCount },
   } = useForm<AuthInput>({
@@ -58,8 +57,8 @@ export default function AuthDialog() {
   });
 
   const isRegister = tab === 1;
-  const watchedUsername = watch("username");
-  const watchedPassword = watch("password");
+  const watchedUsername = useWatch({ control, name: "username" });
+  const watchedPassword = useWatch({ control, name: "password" });
   const passwordValid = isPasswordValid(watchedPassword);
 
   const { status: usernameQueryStatus } = useDebouncedQuery<

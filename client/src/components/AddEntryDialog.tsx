@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, useWatch, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@apollo/client/react";
 import {
@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { ADD_ENTRY, CHECK_DUPLICATE, GET_ENTRIES } from "../graphql/queries";
 import { entrySchema, PHONE_REGEX, type EntryInput } from "../validation/entrySchema";
-import { filterPhoneChars } from "../utils/strings";
+import { formatPhoneNumber } from "../utils/strings";
 import { useDebouncedQuery } from "../hooks/useDebouncedQuery";
 import type { Entry } from "../hooks/usePhoneBookEntries";
 
@@ -33,7 +33,6 @@ export default function AddEntryDialog({ open, onClose, onSuccess, onExited }: P
     control,
     handleSubmit,
     reset,
-    watch,
     formState: { isValid, isSubmitting, submitCount },
   } = useForm<EntryInput>({
     resolver: zodResolver(entrySchema),
@@ -62,8 +61,8 @@ export default function AddEntryDialog({ open, onClose, onSuccess, onExited }: P
     },
   });
 
-  const watchedName = watch("name");
-  const watchedPhone = watch("phone");
+  const watchedName = useWatch({ control, name: "name" });
+  const watchedPhone = useWatch({ control, name: "phone" });
 
   const submitting = addLoading || isSubmitting;
 
@@ -162,7 +161,7 @@ export default function AddEntryDialog({ open, onClose, onSuccess, onExited }: P
               <TextField
                 {...field}
                 onChange={(e) => {
-                  field.onChange(filterPhoneChars(e.target.value));
+                  field.onChange(formatPhoneNumber(e.target.value));
                 }}
                 onBlur={() => {
                   field.onBlur();
