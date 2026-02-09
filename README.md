@@ -55,16 +55,20 @@ PORT=4000
 
 ## Entwicklung (ohne Docker)
 
-Voraussetzung: MongoDB muss lokal laufen (Standard-Port 27017).
+Voraussetzungen:
+- MongoDB muss lokal laufen (Standard-Port 27017)
+- `npm install` muss sowohl in `client/` als auch in `server/` ausgeführt werden
 
 ```bash
+# Abhängigkeiten installieren
+cd server && npm install
+cd ../client && npm install
+
 # Backend (Port 4000)
 cd server
-npm install
 npm run dev
 
 # Frontend (Port 3000, in separatem Terminal)
 cd client
-npm install
 npm run dev
 ```
