@@ -15,30 +15,24 @@ Telefonbuch-Suchapplikation mit React/MUI-Frontend, Apollo Server/GraphQL-Backen
 ## Schnellstart (Docker)
 
 ```bash
-bin/phonebook-test
+npm run docker
 ```
 
 Startet alle drei Services (MongoDB, Server, Client) mit Build. Die Anwendung ist dann unter **http://localhost:3000** erreichbar.
 
 Beim ersten Start werden die Telefonbuch-Daten automatisch in die Datenbank geladen.
 
-Einzelne Services neu bauen:
+Stoppen:
 
 ```bash
-bin/phonebook-test rebuild server
-```
-
-Alternativ direkt mit Docker Compose:
-
-```bash
-docker compose -f docker/compose-dev.yml up --build
+npm run docker:down
 ```
 
 ## Umgebungsvariablen
 
-`bin/phonebook-test` funktioniert ohne weitere Konfiguration — alle Werte sind in `docker/compose-dev.yml` hinterlegt.
+`npm run docker` funktioniert ohne weitere Konfiguration — alle Werte sind in `docker/compose-dev.yml` hinterlegt.
 
-Für `docker compose up` direkt (ohne das Skript):
+Für `docker compose up` direkt:
 
 ```bash
 cp .env.example .env
