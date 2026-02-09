@@ -18,7 +18,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <InitColorSchemeScript defaultMode="light" />
       <CssBaseline />
-      <Box sx={{ height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <Box sx={{ height: "100dvh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
         <AppHeader />
         <Box sx={{ flexGrow: 1, overflow: "auto", display: "flex", flexDirection: "column" }}>
           <Routes>
